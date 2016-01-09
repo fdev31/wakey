@@ -43,4 +43,4 @@ Adding new tablets
 
       Then when you press the button "3" of the device "8" (STYLUS) it should be the same as pressing "x" on a keyboard
 
-- 
+- Once it works, zip the folder and send it to me, or do a pull request with the additional content
