@@ -24,10 +24,9 @@ div.helpgroup > .helpitem {
 
 #sourcecode {
     position: absolute;
-    top: 175px;
+    top: 25ex;
     width: 700px;
-    left: calc(50% - 350px);
-/*background: red;*/
+    left: calc(50% - 365px);
     margin: 0;
     padding: .5em 1.5em;
 }
@@ -46,7 +45,5 @@ tspan {
     cursor: pointer;
 }
 tspan:hover {
-    fill: yellow;
-    stroke: #333;
-    stroke-opacity:1;
+    fill: #fff !important;
 }

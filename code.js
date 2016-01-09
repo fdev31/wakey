@@ -49,7 +49,7 @@ function apply_config() {
 function on_main_canvas_loaded(main_canvas) {
     snap = Snap('#diagram')
     snap.add(main_canvas)
-    snap.selectAll('text[wakey] > tspan').forEach( function(e) {e.node.innerHTML=''} )
+    snap.selectAll('text[wakey] > tspan').forEach( function(e) {e.node.innerHTML='N/A'} )
 }
 
 $(function() {
