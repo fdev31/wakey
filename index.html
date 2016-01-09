@@ -38,11 +38,15 @@
             </section>
 <hr/>
             <div id="input_zone" style="display: none">
-Paste code execution output here:<br/>
+                <span>
 <small><tt>wget -qO- https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py | python -</tt></small><br/>
+Paste code execution output here:<br/>
+                </span>
+                <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
+                <div>
                 <button style="float: right;" type="button" onclick="import_config()" >Load</button>
                 <button style="float: right;" type="button" onclick="$('#device_description').val('')" >Clear</button>
-                <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
+                </div>
             </div>
             <div id="sourcecode" class=""></div>
 <hr/>

@@ -32,7 +32,6 @@ div.helpgroup > .helpitem {
 }
 
 #input_zone {
-    text-align: center;
     width: 800px;
     margin-left: calc(50% - 400px);
 }
@@ -46,4 +45,14 @@ tspan {
 }
 tspan:hover {
     fill: #fff !important;
+}
+hr {
+    clear: both;
+}
+
+button {
+    margin: auto 1ex .5ex auto;
+    padding: 0 1em;
+    font-weight: bold;
+    color: #333;
 }
