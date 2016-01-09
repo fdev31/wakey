@@ -2,6 +2,12 @@ body {
     background: #ddc;
     font-family: 'Lato', sans-serif;
 }
+button {
+    margin: auto 1ex .5ex auto;
+    padding: 0 1em;
+    font-weight: bold;
+    color: #333;
+}
 div.helpgroup  {
     z-index: 4;
     position: absolute;
@@ -39,20 +45,13 @@ div.helpgroup > .helpitem {
 #diagram {
     padding-left: calc(50% - 400px);
 }
+#more_info {
+    display: none;
+}
 
 tspan {
     cursor: pointer;
 }
 tspan:hover {
     fill: #fff !important;
-}
-hr {
-    clear: both;
-}
-
-button {
-    margin: auto 1ex .5ex auto;
-    padding: 0 1em;
-    font-weight: bold;
-    color: #333;
 }
