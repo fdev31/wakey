@@ -1,3 +1,6 @@
+body {
+    background: #ddc;
+}
 div.helpgroup  {
     z-index: 4;
     position: absolute;
