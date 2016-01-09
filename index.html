@@ -4,12 +4,12 @@
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <meta charset="utf-8" />
-        <title>TO simulator</title>
+        <title>Tablet buttons configuration</title>
     </head>
-    <body onresize="size_changed()">
+    <body>
         <a href="https://github.com/fdev31/wakey/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
         <header>
-            <div class="helpgroup">
+            <div class="helpgroup transparent">
                 <div class="helpitem">
                     <h1>button <em>[number]</em></h1>
                     Number is a mouse button (1 = left, 2 = middle, 3 = right)
@@ -43,83 +43,28 @@ Paste code execution output here:<br/>
                 </span>
                 <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
                 <div>
-                <button style="float: left;" type="button" onclick="$('#more_info').css('display', 'block');" >Details</button>
                 <button style="float: right;" type="button" onclick="import_config()" >Load</button>
                 <button style="float: right;" type="button" onclick="$('#device_description').val('')" >Clear</button>
                 </div>
             </div>
             <div id="sourcecode" class=""></div>
-            <br/>
-<div id="more_info">
-<h1>Instructions</h1>
-<ul>
-<li>Copy and paste the code below inside your terminal
-    <ul>
-        <li>Alternatively, you can just run:<br/><tt>wget -qO- https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py | python -</tt></li>
-    </ul>
-</li>
-<li>Copy the terminal output inside the text area above</li>
-<li>Press "Load"</li>
-<li>Edit values in the diagram</li>
-<li>Press "Export" to get the configuration script output</li>
-</ul>
-<h2>Code:</h2>
-            <pre id="extractor">
-cat &lt;&lt;EOF | python -
-import subprocess
-import json
-import re
-
-models = subprocess.Popen(['xsetwacom', '--list'], stdout=subprocess.PIPE).communicate()[0].split(b'\n')
-devices = {}
-pr_re = re.compile("\\\\+([a-zA-Z]+) -\\\\1")
-final_format = {}
-
-def get_device_properties(device_name):
-    raw = subprocess.Popen(['xsetwacom', '-s', '--get', device_name,  'all'], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    buttons = {}
-    for line in raw[0].split(b'\n'):
-        if b'"Button"' in line:
-            line = line[line.index(b"Butt")+8:].decode('utf-8')
-            but = line.split('"')[1::2]
-            buttons[but[0]] = but[1].strip()
-    return buttons
-
-for model in models:
-    if len(model) &lt; 10:
-        continue
-    model = model.decode('utf-8').strip()
-    model_info = model.split('\t')
-    fullname = model_info[0]
-    params = dict( p.split(': ') for p in model_info[1:] )
-    for typename in 'Finger Pen Pad'.split():
-        i = fullname.find(typename)
-        if i != -1:
-            shortname = fullname[:i-1]
-            break
-    else:
-        print('Unable to find real device name')
-
-    params['name'] = fullname.strip()
-
-    if shortname not in devices:
-        devices[shortname] = []
-
-    devices[shortname].append(params)
-
-for name, devices_info in devices.items():
-    button_binding = {}
-    for device in devices_info:
-        buttons = get_device_properties(device['id'])
-        dev = {"%s:%s"%(device['type'], but_name) : pr_re.sub("\\\\1", binding) for but_name, binding in buttons.items()}
-        button_binding[device['name']] = dev
-    final_format[name] = button_binding
-
-print('\n\nCopy the line below:\n====================\n')
-print(json.dumps(final_format) + '\n')
-EOF
-</pre>
-</div>
+        </article>
+        <br/>
+        <article>
+            <div id="more_info">
+                <h1>Instructions</h1>
+                <ul>
+                    <li>Copy and paste in a shell or download and execute <a href="https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.p">the tablet information extractor script</a>
+                        <ul>
+                            <li>Alternatively, you can just run:<br/><tt>wget -qO- http://bit.ly/1OaArFb | python -</tt></li>
+                        </ul>
+                    </li>
+                    <li>Copy the terminal output inside the text area below</li>
+                    <li>Press "Load"</li>
+                    <li>Edit values in the diagram</li>
+                    <li>Press "Export" to get the configuration script output</li>
+                </ul>
+            </div>
         </article>
 
         <!-- code -->

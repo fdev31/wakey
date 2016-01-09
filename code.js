@@ -4,6 +4,8 @@ function import_config() {
     CONF = JSON.parse($('#device_description').val())
     apply_config()
     window.scrollTo(0, 0)
+    $('#more_info').addClass('transparent')
+    setTimeout( function() { $('#more_info').css('display', 'none') }, 1200)
     return false
 }
 
@@ -22,10 +24,12 @@ function get_button_text(item) {
 
 function _change_value_cb(ev) {
     $('.helpgroup').css('visibility', 'visible')
+//    $('.helpgroup').removeClass('transparent')
     var old_value = ev.target.innerHTML
     val = window.prompt("Enter new value", old_value) || old_value
     ev.target.innerHTML = val
     $('.helpgroup').css('visibility', 'hidden')
+//    $('.helpgroup').addClass('transparent')
 }
 
 var button_list = []
