@@ -9,6 +9,7 @@ div.helpgroup  {
     box-shadow: 1px 1px 20px black;
     margin: 2ex;
     visibility: hidden;
+    bottom: 1ex;
 }
 div.helpgroup > .helpitem {
     float: left;
