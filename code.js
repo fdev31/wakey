@@ -57,7 +57,3 @@ $(function() {
     Snap.load("models/"+NAME+"/template.svg", on_main_canvas_loaded);
 })
 
-function show_app() {
-	$('#input_zone').css('display', 'block')
-	$('#diagram').css('display', 'block')
-}

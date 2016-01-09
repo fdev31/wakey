@@ -38,16 +38,18 @@
             </section>
             <div id="input_zone">
                 <span>
-<small><tt>wget -qO- https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py | python -</tt></small><br/>
+<small>&nbsp;<tt>wget -qO- http://bit.ly/1OaArFb | python -</tt>&nbsp;</small><br/>
 Paste code execution output here:<br/>
                 </span>
                 <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
                 <div>
+                <button style="float: left;" type="button" onclick="$('#more_info').css('display', 'block');" >Advanced</button>
                 <button style="float: right;" type="button" onclick="import_config()" >Load</button>
                 <button style="float: right;" type="button" onclick="$('#device_description').val('')" >Clear</button>
                 </div>
             </div>
             <div id="sourcecode" class=""></div>
+            <br/>
 <div id="more_info">
 <h1>Instructions</h1>
 <ul>
@@ -61,7 +63,6 @@ Paste code execution output here:<br/>
 <li>Edit values in the diagram</li>
 <li>Press "Export" to get the configuration script output</li>
 </ul>
-<button onclick="show_app()">Ok, proceed</button>
 <h2>Code:</h2>
             <pre id="extractor">
 cat &lt;&lt;EOF | python -
