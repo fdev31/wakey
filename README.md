@@ -1,6 +1,9 @@
 Wakey
-#####
+-----
 
+Try the [demo](http://planetedessonges.org:8010/wakey/)
+
+![screenshot](https://github.com/fdev31/wakey/raw/master/site/screenshot.jpg)
 
 What is it ?
 ============
