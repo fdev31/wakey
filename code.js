@@ -2,8 +2,9 @@ var NAME = 'Wacom Intuos PT S'
 
 function import_config() {
     CONF = JSON.parse($('#device_description').val())
-    apply_config();
-    return false;
+    apply_config()
+    window.scrollTo(0, 0)
+    return false
 }
 
 function export_config() {

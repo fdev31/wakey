@@ -39,15 +39,20 @@
 <hr/>
             <div id="input_zone" style="display: none">
 Paste code execution output here:<br/>
+<small><tt>wget -O- https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py | python -</tt></small><br/>
                 <button style="float: right;" type="button" onclick="import_config()" >Load</button>
-                <button style="float: right; clear: both;" type="button" onclick="$('#device_description').val('')" >Clear</button>
+                <button style="float: right;" type="button" onclick="$('#device_description').val('')" >Clear</button>
                 <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
             </div>
             <div id="sourcecode" class=""></div>
 <hr/>
 <h1>Instructions</h1>
 <ul>
-<li>Copy and paste the code below inside your terminal</li>
+<li>Copy and paste the code below inside your terminal
+    <ul>
+        <li>Alternatively, you can just run:<br/><tt>wget -O- https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py | python -</tt></li>
+    </ul>
+</li>
 <li>Copy the terminal output inside the text area above</li>
 <li>Press "Load"</li>
 <li>Edit values in the diagram</li>
@@ -63,7 +68,7 @@ import re
 
 models = subprocess.Popen(['xsetwacom', '--list'], stdout=subprocess.PIPE).communicate()[0].split(b'\n')
 devices = {}
-pr_re = re.compile("\\+([a-zA-Z]+) -\\\\1")
+pr_re = re.compile("\\\\+([a-zA-Z]+) -\\\\1")
 final_format = {}
 
 def get_device_properties(device_name):
