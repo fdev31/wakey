@@ -1,0 +1,47 @@
+div.helpgroup  {
+    z-index: 4;
+    position: absolute;
+    background: #eee;
+    box-shadow: 1px 1px 20px black;
+    margin: 2ex;
+    visibility: hidden;
+}
+div.helpgroup > .helpitem {
+    float: left;
+    font-size: 90%;
+    margin-right: 1em;
+    border-left: solid 3px #555;
+    padding: 1ex;
+}
+.helpitem > h1 {
+    font-size: 80%;
+}
+
+#sourcecode {
+    position: absolute;
+    top: 152px;
+    width: 700px;
+    left: calc(50% - 350px);
+/*background: red;*/
+    margin: 0;
+    padding: .5em 1.5em;
+}
+
+#input_zone {
+    text-align: center;
+    width: 800px;
+    margin-left: calc(50% - 400px);
+}
+
+#diagram {
+    padding-left: calc(50% - 400px);
+}
+
+tspan {
+    cursor: pointer;
+}
+tspan:hover {
+    fill: yellow;
+    stroke: #333;
+    stroke-opacity:1;
+}
