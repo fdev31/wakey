@@ -8,13 +8,15 @@ pr_re = re.compile("\\+([a-zA-Z]+) -\\1")
 final_format = {}
 
 def get_device_properties(device_name):
-    raw = subprocess.Popen(['xsetwacom', '-s', '--get', device_name,  'all'], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     buttons = {}
-    for line in raw[0].split(b'\n'):
-        if b'"Button"' in line:
-            line = line[line.index(b"Butt")+8:].decode('utf-8')
-            but = line.split('"')[1::2]
-            buttons[but[0]] = but[1].strip()
+    try:
+        max_but = int(subprocess.getoutput('xsetwacom -s --get "%s" all | grep -v "does not exist" | grep \'"Button"\''%device_name).split('\n')[-1].split('"Button" ')[1].split('"')[1])
+    except IndexError: # no button
+        return {}
+    for n in range(1, max_but+1):
+        o = subprocess.getoutput('xsetwacom --get "%s" Button %d'%(device_name, n))
+        if len(o) > 4:
+            buttons[n] = o
     return buttons
 
 for model in models:
@@ -43,6 +45,8 @@ for name, devices_info in devices.items():
     button_binding = {}
     for device in devices_info:
         buttons = get_device_properties(device['id'])
+        if not buttons:
+            continue
         dev = {"%s:%s"%(device['type'], but_name) : pr_re.sub("\\1", binding) for but_name, binding in buttons.items()}
         button_binding[device['name']] = dev
     final_format[name] = button_binding
