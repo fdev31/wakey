@@ -3,7 +3,6 @@ var NAME = 'Wacom Intuos PT S'
 function strip(text) {
     return text.match('^ *(.*?) *$')[1]
 }
-
 function refresh_options() {
     var have_args = $('#option_type').val() !== 'modetoggle'
     if (have_args) {
@@ -13,7 +12,6 @@ function refresh_options() {
     }
 
 }
-
 function import_config() {
     CONF = JSON.parse($('#device_description').val())
     apply_config()
@@ -22,7 +20,6 @@ function import_config() {
     setTimeout( function() { $('#more_info').css('display', 'none') }, 1200)
     return false
 }
-
 function export_config() {
     var text = []
     for (var button in button_list) {
@@ -31,11 +28,9 @@ function export_config() {
     }
     $('#sourcecode').html(text.join(';<br/>') + '\n<br/>\n<br/>\n<br/>\n')
 }
-
 function get_button_text(item) {
     return snap.select('text[wakey="'+item+'"] tspan')
 }
-
 function apply_value() {
     var text = get_button_text( $('#value_popup').data('wakey') )
     text.node.innerHTML = strip($('#option_type').val() + ' ' + $('#option_argument').val())
@@ -68,7 +63,6 @@ function _change_value_cb(ev) {
     $('#value_popup').data('wakey', ev.target.parentNode.getAttribute('wakey'))
     $('#option_argument').focus()
 }
-
 var button_list = []
 function install_handlers(device, item, text) {
     var match = get_button_text(item)
@@ -78,7 +72,6 @@ function install_handlers(device, item, text) {
         button_list.push( {'dev': device, 'name': item} )
     }
 }
-
 function apply_config() {
     button_list = []
 	var tablet = CONF[NAME]
