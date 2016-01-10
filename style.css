@@ -36,7 +36,7 @@ button:hover {
 #option_argument {
     width: calc( 100% - 2ex);
     margin: .5ex 0;
-    padding: 0 1ex;
+    padding: 3px 1ex;
 }
 div.helpgroup  {
     display: block;

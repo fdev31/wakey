@@ -1,4 +1,4 @@
-var NAME = 'Wacom Intuos PT S'
+var NAME = null
 
 function strip(text) {
     return text.match('^ *(.*?) *$')[1]
@@ -18,11 +18,26 @@ function import_defaults() {
     } )
 }
 function import_config() {
+    // set globals
     CONF = JSON.parse($('#device_description').val())
-    apply_config()
+    for (var k in CONF) { break }
+    if (!!!NAME) { // first import
+    }
+    if (NAME !== k ) {
+        NAME = k
+        Snap.load("models/"+NAME+"/template.svg", function(canvas) {
+            on_main_canvas_loaded(canvas)
+            apply_config()
+        });
+    } else {
+        apply_config()
+    }
+
     window.scrollTo(0, 0)
     $('#more_info').addClass('transparent')
     setTimeout( function() { $('#more_info').css('display', 'none') }, 1200)
+
+
     return false
 }
 function export_config() {
@@ -89,10 +104,9 @@ function apply_config() {
 function on_main_canvas_loaded(main_canvas) {
     snap = Snap('#diagram')
     snap.add(main_canvas)
-    import_defaults()
+    snap.selectAll('text[wakey] > tspan').forEach( function(e) {e.node.innerHTML='N/A'} )
 }
 
 $(function() {
-    Snap.load("models/"+NAME+"/template.svg", on_main_canvas_loaded);
 })
 
