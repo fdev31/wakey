@@ -12,12 +12,6 @@
     </head>
     <body>
 
-    <div class="github-fork-ribbon-wrapper left-bottom">
-        <div class="github-fork-ribbon">
-            <a href="https://github.com/fdev31/wakey/">Fork me on GitHub</a>
-        </div>
-    </div>
-
         <div id="value_popup" class="shadow"  onkeydown="if (event.keyCode === 27) $('#value_popup').css('visibility', 'hidden')">
             <div class="button_group">
                 <button type="button" class="but_ok" onclick="apply_value()">Ok</button>
@@ -35,18 +29,16 @@
             </form>
             <div class="helpgroup">
                 <div class="helpitem">
-                    <h1>button <em>[number]</em></h1>
-                    Number is a mouse button (1 = left, 2 = middle, 3 = right)
-                    <br/>
-                    <em>You can ommit "button" and just give the button number</em>
-                </div>
-                <div class="helpitem">
-                    <h1>key <em>[name]</em></h1>
+                    <h1>Key <em>[name]</em></h1>
                     Modifiers: ctrl, alt, shift, super, etc...<br/>
-                    Keys: tab, backspace, del, home, PgUp, Esc, up, a, b, c...<br/>
+                    Keys: tab, backspace, del, home, PgUp, Esc, up, a, b, c...
                 </div>
                 <div class="helpitem">
-                    <h1>modetoggle</h1>
+                    <h1>Button <em>[number]</em></h1>
+                    Number is a mouse button (1 = left, 2 = middle, 3 = right)
+                </div>
+                <div class="helpitem">
+                    <h1>Toggle mode</h1>
                     Switch between relative and absolute mode
                 </div>
                 <div class="helpitem">
@@ -102,5 +94,12 @@ Paste code execution output here:<br/>
         <script src="deps/zepto.min.js"></script>
         <script src="deps/clipboard.min.js"></script>
         <script src="deps/code.js"></script>
+        <!-- github ribbon -->
+    <div class="github-fork-ribbon-wrapper left-bottom">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/fdev31/wakey/">Fork me on GitHub</a>
+        </div>
+    </div>
+
     </body>
 </html>

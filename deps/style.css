@@ -30,7 +30,7 @@ button:hover {
 #value_popup {
     visibility: hidden;
     position: absolute;
-    background: #bbb;
+    background: #eaeaea;
     color: #eee;
     width: 80%;
     max-width: 400px;
