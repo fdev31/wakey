@@ -15,7 +15,7 @@ function refresh_options() {
 }
 function import_defaults() {
     snap.selectAll('text[wakey] > tspan').forEach( function(e) {
-        e.node.innerHTML = 'button'
+        e.node.innerHTML = 'button +' + e.parent().node.getAttribute('wakey').split(':')[1]
     } )
 }
 function import_config() {
