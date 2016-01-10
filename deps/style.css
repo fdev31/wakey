@@ -6,6 +6,7 @@ textarea {
     margin: 0 1ex;
     padding: 0;
     width: calc(100% - 2ex);
+    font-size: 70%;
 }
 button {
     margin: .5ex 1ex .5ex .5ex;

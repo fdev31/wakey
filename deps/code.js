@@ -79,11 +79,19 @@ function _change_value_cb(ev) {
     $('#value_popup').data('wakey', ev.target.parentNode.getAttribute('wakey'))
     $('#option_argument').focus()
 }
+function cb_set_help_text(txt) {
+    snap.select('#help_text').node.innerHTML = txt
+}
+function cb_clear_help_text() {
+    snap.select('#help_text').node.innerHTML = ""
+}
 function install_handlers(device, item, text) {
     var match = get_button_text(item)
     if (!!match) {
         match.node.innerHTML = text
         match.node.onclick = _change_value_cb
+        match.node.onmouseenter = function() { snap.select('#help_text').node.innerHTML = "Left click to edit "+item.toLowerCase().replace(':', ' button ') }
+        match.node.onmouseleave = cb_clear_help_text
         button_list.push( {'dev': device, 'name': item} )
     }
 }
