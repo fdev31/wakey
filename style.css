@@ -2,6 +2,11 @@ body {
     background: #ddc;
     font-family: 'Lato', sans-serif;
 }
+textarea {
+    margin: 0 1ex;
+    padding: 0;
+    width: calc(100% - 2ex);
+}
 button {
     margin: .5ex 1ex .5ex .5ex;
     padding: 0 1em;
