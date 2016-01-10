@@ -1,4 +1,5 @@
 var NAME = null
+var button_list = []
 
 function strip(text) {
     return text.match('^ *(.*?) *$')[1]
@@ -21,8 +22,6 @@ function import_config() {
     // set globals
     CONF = JSON.parse($('#device_description').val())
     for (var k in CONF) { break }
-    if (!!!NAME) { // first import
-    }
     if (NAME !== k ) {
         NAME = k
         Snap.load("models/"+NAME+"/template.svg", function(canvas) {
@@ -32,12 +31,9 @@ function import_config() {
     } else {
         apply_config()
     }
-
     window.scrollTo(0, 0)
     $('#more_info').addClass('transparent')
     setTimeout( function() { $('#more_info').css('display', 'none') }, 1200)
-
-
     return false
 }
 function export_config() {
@@ -83,7 +79,6 @@ function _change_value_cb(ev) {
     $('#value_popup').data('wakey', ev.target.parentNode.getAttribute('wakey'))
     $('#option_argument').focus()
 }
-var button_list = []
 function install_handlers(device, item, text) {
     var match = get_button_text(item)
     if (!!match) {
@@ -103,10 +98,6 @@ function apply_config() {
 }
 function on_main_canvas_loaded(main_canvas) {
     snap = Snap('#diagram')
+    snap.children().forEach( function(o) { o.remove() } )
     snap.add(main_canvas)
-    snap.selectAll('text[wakey] > tspan').forEach( function(e) {e.node.innerHTML='N/A'} )
 }
-
-$(function() {
-})
-
