@@ -51,5 +51,8 @@ for name, devices_info in devices.items():
         button_binding[device['name']] = dev
     final_format[name] = button_binding
 
-print('\n\nCopy the line below:\n====================\n')
-print(json.dumps(final_format) + '\n')
+try:
+    SUBMODE
+except:
+    print('\n\nCopy the line below:\n====================\n')
+    print(json.dumps(final_format) + '\n')
