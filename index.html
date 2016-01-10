@@ -8,8 +8,22 @@
     </head>
     <body>
         <a href="https://github.com/fdev31/wakey/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
-        <header>
-            <div class="helpgroup transparent">
+        <div id="value_popup" class="shadow"  onkeydown="if (event.keyCode === 27) $('#value_popup').css('visibility', 'hidden')">
+            <form onsubmit="apply_value(); return false" >
+                <select id="option_type" onchange="refresh_options()">
+                    <option value="key">Key</option>
+                    <option value="button">Button</option>
+                    <option value="modetoggle">Toggle mode</option>
+                </select>
+                <span id="value_popup_options">
+                    <div class="button_group">
+                        <button type="button" class="but_ok" onclick="apply_value()">Ok</button>
+                        <button type="button" class="but_ko" onclick="$('#value_popup').css('visibility', 'hidden')">Cancel</button>
+                    </div>
+                    <input type="text" id="option_argument"/>
+                </span>
+            </form>
+            <div class="helpgroup">
                 <div class="helpitem">
                     <h1>button <em>[number]</em></h1>
                     Number is a mouse button (1 = left, 2 = middle, 3 = right)
@@ -20,15 +34,19 @@
                     <h1>key <em>[name]</em></h1>
                     Modifiers: ctrl, alt, shift, super, etc...<br/>
                     Keys: tab, backspace, del, home, PgUp, Esc, up, a, b, c...<br/>
-                    <em>Exemple:</em> <tt>key +ctrl button 5 key -ctrl</tt> <br/>
-                    <b>+</b>: key press, <b>-</b>: key release
                 </div>
                 <div class="helpitem">
                     <h1>modetoggle</h1>
                     Switch between relative and absolute mode
                 </div>
+                <div class="helpitem">
+                    <h1><em>... combos</em></h1>
+                    i.e. "<tt>key +ctrl button 5 key -ctrl</tt>"<br/>
+                    "<b>+</b>" means key press and "<b>-</b>" key release
+                </div>
+
             </div>
-        </header>
+        </div>
         <article>
             <section>
                 <aside>
@@ -37,21 +55,21 @@
                 </aside>
             </section>
             <div id="input_zone">
+                <div class="button_group">
+                <button type="button" onclick="import_config()" class="but_ok">Load</button>
+                <button type="button" onclick="$('#device_description').val('')" class="but_ko">Clear</button>
+                </div>
                 <span>
 <small>&nbsp;<tt>wget -qO- http://bit.ly/1OaArFb | python -</tt>&nbsp;</small><br/>
 Paste code execution output here:<br/>
                 </span>
-                <textarea style="flush: right" id="device_description" cols="100" rows="5"></textarea>
-                <div>
-                <button style="float: right;" type="button" onclick="import_config()" >Load</button>
-                <button style="float: right;" type="button" onclick="$('#device_description').val('')" >Clear</button>
-                </div>
+                <textarea style="flush: right" id="device_description" cols="97" rows="5"></textarea>
             </div>
             <div id="sourcecode" class=""></div>
         </article>
         <br/>
         <article>
-            <div id="more_info">
+            <div id="more_info" class="shadow">
                 <h1>Instructions</h1>
                 <ul>
                     <li>Copy and paste in a shell or download and execute <a href="https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py">the tablet information extractor script</a>

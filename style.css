@@ -3,26 +3,50 @@ body {
     font-family: 'Lato', sans-serif;
 }
 button {
-    margin: auto 1ex .5ex auto;
+    margin: .5ex 1ex .5ex .5ex;
     padding: 0 1em;
     font-weight: bold;
     color: #333;
+    border-radius: 5px;
+    border: solid 2px #555;
+    background-color: #B9B9B9;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #E0E0E0;
+}
+.but_ok {
+    border-color: #549DB8;
+}
+.but_ko {
+    border-color: #F289DD;
+}
+#value_popup {
+    visibility: hidden;
+    position: absolute;
+    background: #bbb;
+    color: #eee;
+    width: 80%;
+    max-width: 400px;
+    padding: 1em;
+    border-radius: 5px;
+    margin-left: 35%;
+    z-index: 10;
+}
+#option_argument {
+    width: calc( 100% - 2ex);
+    margin: .5ex 0;
+    padding: 0 1ex;
 }
 div.helpgroup  {
-    z-index: 4;
-    position: absolute;
-    background: #eee;
-    box-shadow: 1px 1px 20px black;
-    margin: 2ex;
-    visibility: hidden;
-    bottom: 1ex;
+    display: block;
 }
 div.helpgroup > .helpitem {
-    float: left;
     font-size: 90%;
     margin-right: 1em;
     border-left: solid 3px #555;
     padding: 1ex;
+    color: #333;
 }
 .helpitem > h1 {
     font-size: 80%;
@@ -36,12 +60,16 @@ div.helpgroup > .helpitem {
     margin: 0;
     padding: .5em 1.5em;
 }
-
+.button_group {
+    float: right;
+}
+.shadow {
+    box-shadow: 0px 3px 6px 2px #333;
+}
 #input_zone {
     width: 800px;
     margin-left: calc(50% - 400px);
 }
-
 #diagram {
     padding-left: calc(50% - 400px);
 }
@@ -61,7 +89,6 @@ div.helpgroup > .helpitem {
     padding: 0 1em;
     border-radius: 5px;
 }
-
 tspan {
     cursor: pointer;
 }

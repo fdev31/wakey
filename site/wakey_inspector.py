@@ -16,7 +16,7 @@ def get_device_properties(device_name):
     for n in range(1, max_but+1):
         o = subprocess.getoutput('xsetwacom --get "%s" Button %d'%(device_name, n))
         if len(o) > 4:
-            buttons[n] = o
+            buttons[n] = o.strip()
     return buttons
 
 for model in models:
