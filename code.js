@@ -12,6 +12,11 @@ function refresh_options() {
     }
 
 }
+function import_defaults() {
+    snap.selectAll('text[wakey] > tspan').forEach( function(e) {
+        e.node.innerHTML = 'button'
+    } )
+}
 function import_config() {
     CONF = JSON.parse($('#device_description').val())
     apply_config()
@@ -84,7 +89,7 @@ function apply_config() {
 function on_main_canvas_loaded(main_canvas) {
     snap = Snap('#diagram')
     snap.add(main_canvas)
-    snap.selectAll('text[wakey] > tspan').forEach( function(e) {e.node.innerHTML='N/A'} )
+    import_defaults()
 }
 
 $(function() {
