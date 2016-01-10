@@ -21,7 +21,7 @@ span_template = '''
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.37210274px;font-family:Lato;-inkscape-font-specification:Lato">%(text)s</tspan></text>
 '''
 
-exec(open('wakey_inspector.py').read(), globals())
+exec(open('../site/wakey_inspector.py').read(), globals())
 
 def set_key(dev_id, but_id, value=None):
     subprocess.call(['xsetwacom', '--set', dev_id, 'Button', but_id, value or 'key +shift %s -shift'%but_id])
