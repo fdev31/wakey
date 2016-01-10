@@ -36,6 +36,7 @@ for model in models:
         print('Unable to find real device name')
 
     params['name'] = fullname.strip()
+    params['shortname'] = fullname[ len(shortname)+1:].strip()
 
     if shortname not in devices:
         devices[shortname] = []
@@ -49,7 +50,7 @@ for name, devices_info in devices.items():
         if not buttons:
             continue
         dev = {"%s:%s"%(device['type'], but_name) : pr_re.sub("\\1", binding) for but_name, binding in buttons.items()}
-        button_binding[device['name']] = dev
+        button_binding[device['shortname']] = dev
     final_format[name] = button_binding
 
 try:

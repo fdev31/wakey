@@ -10,8 +10,8 @@ function refresh_options() {
         $('#value_popup_options').show()
     } else {
         $('#value_popup_options').hide()
+        $("#option_argument").val('')
     }
-
 }
 function import_defaults() {
     snap.selectAll('text[wakey] > tspan').forEach( function(e) {
@@ -40,7 +40,7 @@ function export_config() {
     var text = []
     for (var button in button_list) {
         button = button_list[button]
-        text.push(strip('xsetwacom set "'+button.dev+'" Button '+button.name.split(':')[1]+' "'+get_button_text(button.name).node.innerHTML+'"'))
+        text.push(strip('xsetwacom set "' + NAME + ' ' + button.dev + '" Button ' + button.name.split(':')[1] + ' "'+get_button_text(button.name).node.innerHTML + '"'))
     }
     $('#sourcecode').html(text.join(';<br/>') + '\n<br/>\n<br/>\n<br/>\n')
 }
@@ -79,10 +79,10 @@ function _change_value_cb(ev) {
     $('#value_popup').data('wakey', ev.target.parentNode.getAttribute('wakey'))
     $('#option_argument').focus()
 }
-function cb_set_help_text(txt) {
+function set_help_text(txt) {
     snap.select('#help_text').node.innerHTML = txt
 }
-function cb_clear_help_text() {
+function clear_help_text() {
     snap.select('#help_text').node.innerHTML = ""
 }
 function install_handlers(device, item, text) {
@@ -90,8 +90,8 @@ function install_handlers(device, item, text) {
     if (!!match) {
         match.node.innerHTML = text
         match.node.onclick = _change_value_cb
-        match.node.onmouseenter = function() { snap.select('#help_text').node.innerHTML = "Left click to edit "+item.toLowerCase().replace(':', ' button ') }
-        match.node.onmouseleave = cb_clear_help_text
+        match.node.onmouseenter = function() { set_help_text( "Left click to edit " + item.toLowerCase().replace(':', ' button ')) }
+        match.node.onmouseleave = clear_help_text
         button_list.push( {'dev': device, 'name': item} )
     }
 }
@@ -108,4 +108,11 @@ function on_main_canvas_loaded(main_canvas) {
     snap = Snap('#diagram')
     snap.children().forEach( function(o) { o.remove() } )
     snap.add(main_canvas)
+    // init defaults
+    snap.select('#help_text').node.innerHTML = ''
+    snap.select('#export_button').node.onmouseenter = function() { set_help_text('Display shell script for this settings, also copy to clipboard') }
+    snap.select('#export_button').node.onmouseleave = clear_help_text
+    new Clipboard('#export_button', {
+            text: function() { return $('#sourcecode')[0].innerText}
+    });
 }

@@ -9,6 +9,10 @@
     <body>
         <a href="https://github.com/fdev31/wakey/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
         <div id="value_popup" class="shadow"  onkeydown="if (event.keyCode === 27) $('#value_popup').css('visibility', 'hidden')">
+            <div class="button_group">
+                <button type="button" class="but_ok" onclick="apply_value()">Ok</button>
+                <button type="button" class="but_ko" onclick="$('#value_popup').css('visibility', 'hidden')">Cancel</button>
+            </div>
             <form onsubmit="apply_value(); return false" >
                 <select id="option_type" onchange="refresh_options()">
                     <option value="key">Key</option>
@@ -16,10 +20,6 @@
                     <option value="modetoggle">Toggle mode</option>
                 </select>
                 <span id="value_popup_options">
-                    <div class="button_group">
-                        <button type="button" class="but_ok" onclick="apply_value()">Ok</button>
-                        <button type="button" class="but_ko" onclick="$('#value_popup').css('visibility', 'hidden')">Cancel</button>
-                    </div>
                     <input type="text" id="option_argument"/>
                 </span>
             </form>
@@ -56,9 +56,9 @@
             </section>
             <div id="input_zone">
                 <div class="button_group">
-                <button type="button" onclick="import_config()" class="but_ok">Load</button>
-                <button type="button" onclick="$('#device_description').val('')" class="but_ko">Clear</button>
-                <button type="button" onclick="import_defaults()" class="but_ko">Reset</button>
+                <button type="button" title="Load code into binding application" onclick="import_config()" class="but_ok">Load</button>
+                <button type="button" title="Clear code area" onclick="$('#device_description').val('')" class="but_ko">Clear</button>
+                <button type="button" title="Reset bindings to defaults" onclick="import_defaults()" class="but_ko">Reset</button>
                 </div>
                 <span>
 <small>&nbsp;<tt>wget -qO- http://bit.ly/1OaArFb | python -</tt>&nbsp;</small><br/>
@@ -90,6 +90,7 @@ Paste code execution output here:<br/>
         <!-- code -->
         <script src="deps/snap.svg-min.js"></script>
         <script src="deps/zepto.min.js"></script>
+        <script src="deps/clipboard.min.js"></script>
         <script src="deps/code.js"></script>
     </body>
 </html>
