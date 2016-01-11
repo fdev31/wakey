@@ -1,22 +1,20 @@
 Wakey
------
+=====
 
-Try the [demo](http://planetedessonges.org:8010/wakey/)
+A simple GUI to help you configure wacom devices under Linux
+------------------------------------------------------------
 
-Watch the [tutorial](https://youtu.be/KdaFmbhxYmU)
+*NO INSTALLATION NEEDED*
+
+- Try the [demo](http://planetedessonges.org:8010/wakey/), just press "Load" once page is displayed
+
+- Watch the [tutorial](https://youtu.be/KdaFmbhxYmU)
 
 ![screenshot](https://github.com/fdev31/wakey/raw/master/site/screenshot.jpg)
 
 
-What is it ?
-============
-
-It's a simple GUI to help you configure wacom devices under Linux
-
-Currently, only *Bamboo Fun small* is supported, but supporting new devices is very easy, contact me if you are interested.
-
 Adding new tablets
-==================
+------------------
 
 - Run `xsetwacom --list`
 
@@ -40,3 +38,8 @@ Adding new tablets
         `xsetwacom --set 8 Button 3 "key x"`
       Then when you press the button "3" of the device "8" (STYLUS) it should be the same as pressing "x" on a keyboard
 - Once it works, zip the folder and send it to me, or do a pull request with the additional content
+
+Limitations
+-----------
+
+Currently, only *Bamboo Fun small* is supported, but supporting new devices is very easy, contact me if you are interested.
