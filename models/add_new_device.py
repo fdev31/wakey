@@ -2,8 +2,13 @@
 
 SUBMODE = True
 
+def dprint(*a, **k):
+    return
+    print(*a, **k)
+
 import os
 import itertools
+BASEDIR = os.path.abspath(os.path.dirname(__file__)).rsplit('/', 1)[0]
 
 span_template = '''
     <text
@@ -21,15 +26,16 @@ span_template = '''
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.37210274px;font-family:Lato;-inkscape-font-specification:Lato">%(text)s</tspan></text>
 '''
 
-exec(open('../site/wakey_inspector.py').read(), globals())
+exec(open(BASEDIR + '/site/wakey_inspector.py').read(), globals())
 
 def set_key(dev_id, but_id, value=None):
-    subprocess.call(['xsetwacom', '--set', dev_id, 'Button', but_id, value or 'key +shift %s -shift'%but_id])
+    dprint('xsetwacom', '--set', dev_id, 'Button', but_id, value or 'key +shift %s -shift'%but_id)
+    subprocess.Popen(['xsetwacom', '--set', dev_id, 'Button', but_id, value or 'key +shift %s -shift'%but_id], stderr=subprocess.PIPE)
 
 for tab_name, tab_devices in final_format.items():
-    TEMPLATE = os.path.join(tab_name, 'template.svg')
+    TEMPLATE = os.path.join(BASEDIR, 'models', tab_name, 'template.svg')
     try:
-        os.mkdir(tab_name)
+        os.mkdir(os.path.join(BASEDIR, 'models', tab_name))
     except:
         pass
     else: # gen svg
@@ -46,26 +52,27 @@ for tab_name, tab_devices in final_format.items():
                 svg_code.append(span_template % d)
 
         open(TEMPLATE, 'w').write(
-                open('template.svg').read().replace('{{{BUTTONS}}}', '\n'.join(svg_code))
+                open(os.path.join(BASEDIR, 'models', 'template.svg')).read().replace('{{{BUTTONS}}}', '\n'.join(svg_code))
                 )
 
         subprocess.Popen(['inkscape', TEMPLATE], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("SVG saved, now to help you know the button number of each device,\n pressing buttons will display the number, we will proceed device by device...")
 
-    print('Edit template.svg to adapt text positions or drawings to match the tablet')
+    print('\nEdit template.svg to adapt text positions or drawings to match the tablet')
     print('For each device, press device buttons to know the mapping or ENTER to skip next (infinite loop, enter "q" to leave)\n')
 
     print('')
     for tab_name, tab_devices in final_format.items():
         # set straingforward values
-        for device_name, buttons in itertools.cycle(tab_devices.items()):
+        for device_name, buttons in itertools.cycle(reversed(sorted(tab_devices.items()))):
+            device_name = "%s %s"%(tab_name, device_name)
             button_numbers = []
             for but_id in buttons.keys():
                 but_nr = but_id.split(':')[1]
                 button_numbers.append(but_nr)
                 set_key(device_name, but_nr)
             if buttons:
-                a = input("%s's buttons: %s : "%(device_name, ', '.join(sorted(button_numbers))))
+                a = input(" - %s declares %d buttons: "%(device_name, len(button_numbers)))
                 # revert values
                 for but_id, binding in buttons.items():
                     but_nr = but_id.split(':')[1]
