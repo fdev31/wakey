@@ -18,6 +18,11 @@ Currently, only *Bamboo Fun small* is supported, but supporting new devices is v
 Adding new tablets
 ==================
 
+A special tool allows you almost instant addition of new tablets, take a look at the [tutorial](https://www.youtube.com/watch?v=GS67GMyjIRA)
+If you need support to contribute your work, go contact me.
+
+Alternatively, you can use those manual instructions:
+
 - Run `xsetwacom --list`
 
     Wacom Intuos PT S Pen stylus        id: 8   type: STYLUS    
