@@ -63,17 +63,21 @@
                 <button type="button" title="Reset bindings to defaults" onclick="import_defaults()" class="but_ko">Reset</button>
                 </div>
                 <span>
+                    1° Copy this line into your shell and press RETURN<br/>
 <small>&nbsp;<tt>wget -qO- http://bit.ly/1OaArFb | python -</tt>&nbsp;</small><br/>
-Paste code execution output here:<br/>
+2° Paste code execution output here:<br/>
                 </span>
                 <textarea style="flush: right" id="device_description" cols="97" rows="5">{"Wacom Intuos PT S": {"Pen eraser": {"ERASER:1": "button +1", "ERASER:2": "button +2", "ERASER:3": "button +3"}, "Pen stylus": {"STYLUS:2": "button +2", "STYLUS:3": "button +3", "STYLUS:1": "button +1"}, "Pad pad": {"PAD:8": "button +8", "PAD:1": "button +1", "PAD:2": "key +Shift_L eacute -Shift_L", "PAD:3": "button +3", "PAD:9": "button +9"}}}
                 </textarea>
+                <span>
+                    3° Press "Load" button, then "Export" to display script
+                </span>
             </div>
             <div id="sourcecode" class=""></div>
         </article>
         <br/>
         <article>
-            <div id="more_info" class="shadow">
+            <div id="more_info" class="shadow" style="visibility: hidden">
                 <h1>Instructions</h1>
                 <ul>
                     <li>Copy and paste in a shell or download and execute <a href="https://github.com/fdev31/wakey/raw/master/site/wakey_inspector.py">the tablet information extractor script</a>
