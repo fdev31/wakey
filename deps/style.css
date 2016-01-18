@@ -76,6 +76,10 @@ div.helpgroup > .helpitem {
 #input_zone {
     width: 800px;
     margin-left: calc(50% - 400px);
+    border: solid 1px #bdbdbd;
+    background-color: #fdfdfd;
+    padding: 1ex;
+    border-radius: 5px;
 }
 #diagram {
     padding-left: calc(50% - 400px);
