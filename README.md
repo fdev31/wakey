@@ -16,9 +16,10 @@ A simple GUI to help you configure wacom devices under Linux
 Adding new tablets
 ------------------
 
-A script allows straightforward support of new tablet models, see the [video tutorial](https://youtu.be/GS67GMyjIRA)
+A special tool allows you almost instant addition of new tablets, take a look at the [tutorial](https://youtu.be/GS67GMyjIRA)
+If you need support to contribute your work, go contact me.
 
-Alternatively, you can proceed manually this way:
+Alternatively, you can use those manual instructions:
 
 - Run `xsetwacom --list`
 
