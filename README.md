@@ -16,6 +16,10 @@ A simple GUI to help you configure wacom devices under Linux
 Adding new tablets
 ------------------
 
+A script allows straightforward support of new tablet models, see the [video tutorial](https://youtu.be/GS67GMyjIRA)
+
+Alternatively, you can proceed manually this way:
+
 - Run `xsetwacom --list`
 
     Wacom Intuos PT S Pen stylus        id: 8   type: STYLUS    
