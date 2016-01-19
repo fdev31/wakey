@@ -1,7 +1,12 @@
 body {
     font-size: 150%;
-    background: #ddc;
     font-family: 'Lato', sans-serif;
+
+    background-color: #ddc;
+    font-family: 'Lato', sans-serif;
+    background-image: url('pen.png');
+    background-position: 99% 50%;
+    background-repeat: no-repeat;
 }
 textarea {
     margin: 0 1ex;
