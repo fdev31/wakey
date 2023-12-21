@@ -6,8 +6,6 @@ A simple GUI to help you configure wacom devices under Linux
 
 *NO INSTALLATION NEEDED*
 
-- Try the [demo](http://planetedessonges.org:8010/wakey/), just press "Load" once page is displayed
-
 - Watch the [tutorial](https://youtu.be/KdaFmbhxYmU)
 
 ![screenshot](https://github.com/fdev31/wakey/raw/master/site/screenshot.jpg)
